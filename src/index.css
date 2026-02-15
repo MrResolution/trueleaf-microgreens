@@ -241,3 +241,95 @@ h6 {
     display: none;
   }
 }
+
+/* Optimized CSS Animations (GPU Accelerated) */
+@keyframes float-blob-1 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(30px, -30px);
+  }
+}
+
+@keyframes float-blob-2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-20px, 20px);
+  }
+}
+
+@keyframes float-icon {
+  0% {
+    transform: translateY(-15px) rotate(0deg);
+    opacity: 0.1;
+  }
+
+  50% {
+    transform: translateY(15px) rotate(10deg);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translateY(-15px) rotate(0deg);
+    opacity: 0.1;
+  }
+}
+
+@keyframes float-icon-delayed {
+  0% {
+    transform: translateY(15px) rotate(0deg);
+    opacity: 0.1;
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(-10deg);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translateY(15px) rotate(0deg);
+    opacity: 0.1;
+  }
+}
+
+.animate-blob-1 {
+  animation: float-blob-1 20s infinite ease-in-out;
+  will-change: transform;
+}
+
+.animate-blob-2 {
+  animation: float-blob-2 15s infinite ease-in-out;
+  will-change: transform;
+}
+
+.animate-icon {
+  animation: float-icon 12s infinite ease-in-out;
+  will-change: transform, opacity;
+}
+
+.animate-icon-delayed {
+  animation: float-icon-delayed 16s infinite ease-in-out;
+  will-change: transform, opacity;
+}
+
+/* Accessibility Helpers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

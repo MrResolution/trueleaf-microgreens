@@ -339,24 +339,17 @@ const Footer = () => (
 function App() {
   return (
     <div className="App" style={{ position: 'relative', overflow: 'hidden' }}>
-      {/* Background Blobs - Subtle & Behind Content */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2 }}
+      <div
+        className="animate-blob-1"
+        aria-hidden="true"
         style={{ position: 'fixed', top: '-10%', left: '-10%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(90, 140, 58, 0.1) 0%, transparent 70%)', zIndex: -1, pointerEvents: 'none' }}
-      >
-        <motion.div animate={{ x: [0, 30, 0], y: [0, -30, 0] }} transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }} style={{ width: '100%', height: '100%' }} />
-      </motion.div>
+      />
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2 }}
+      <div
+        className="animate-blob-2"
+        aria-hidden="true"
         style={{ position: 'fixed', bottom: '-10%', right: '-10%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(45, 80, 22, 0.1) 0%, transparent 70%)', zIndex: -1, pointerEvents: 'none' }}
-      >
-        <motion.div animate={{ x: [0, -20, 0], y: [0, 20, 0] }} transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }} style={{ width: '100%', height: '100%' }} />
-      </motion.div>
+      />
 
       {/* Floating Sprout Icons - Subtle & Behind Content */}
       {[
@@ -366,20 +359,10 @@ function App() {
         { Icon: Leaf, top: '60%', right: '5%' },
         { Icon: Leaf, bottom: '10%', left: '40%' },
       ].map((item, index) => (
-        <motion.div
+        <div
           key={index}
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: [0.1, 0.2, 0.1],
-            y: [-15, 15, -15],
-            rotate: [0, 10, -10, 0]
-          }}
-          transition={{
-            duration: 12 + index * 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: index * 2
-          }}
+          className={index % 2 === 0 ? "animate-icon" : "animate-icon-delayed"}
+          aria-hidden="true"
           style={{
             position: 'fixed',
             top: item.top,
@@ -388,11 +371,12 @@ function App() {
             bottom: item.bottom,
             zIndex: -1,
             pointerEvents: 'none',
-            color: 'var(--color-primary)'
+            color: 'var(--color-primary)',
+            opacity: 0.1
           }}
         >
           <item.Icon size={48} strokeWidth={1.5} />
-        </motion.div>
+        </div>
       ))}
       <Navbar />
       <Hero />
