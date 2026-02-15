@@ -1,7 +1,9 @@
 {
-  "name": "new_app",
+  "name": "trueleaf-microgreens",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A modern, responsive website for TrueLeaf Microgreens built with React and Vite.",
+  "author": "TrueLeaf",
   "type": "module",
   "scripts": {
     "dev": "vite",
