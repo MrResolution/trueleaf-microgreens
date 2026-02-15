@@ -175,8 +175,14 @@ h6 {
 
   /* Logo */
   .logo img {
-    max-height: 150px !important;
-    /* Smaller logo on mobile initial load */
+    max-height: 200px !important;
+    margin-top: -20px;
+  }
+
+  /* Nav spacing on mobile */
+  nav {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
   }
 
   /* Products */
