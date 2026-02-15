@@ -49,7 +49,21 @@ const Navbar = () => {
           >
             <div className="container" style={{ padding: '2rem 0', display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center' }}>
               {['Home', 'About', 'Products', 'Contact'].map((item) => (
-                <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsOpen(false)} style={{ fontSize: '1.5rem', fontWeight: 500, color: 'var(--color-primary)', textDecoration: 'none' }}>
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  onClick={() => setIsOpen(false)}
+                  style={{
+                    fontSize: '1.5rem',
+                    fontWeight: 500,
+                    color: 'var(--color-primary)',
+                    textDecoration: 'none',
+                    display: 'block',
+                    width: '100%',
+                    textAlign: 'center',
+                    padding: '10px'
+                  }}
+                >
                   {item}
                 </a>
               ))}
