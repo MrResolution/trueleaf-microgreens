@@ -230,13 +230,13 @@ const Footer = () => (
 
 function App() {
   return (
-    <div className="App" style={{ position: 'relative', overflow: 'hidden', backgroundColor: 'var(--color-cream)' }}>
-      {/* Background Blobs - Very Low Opacity */}
+    <div className="App" style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Background Blobs - Increased Opacity for Visibility */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2 }}
-        style={{ position: 'fixed', top: '-20%', left: '-10%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(90, 140, 58, 0.03) 0%, transparent 70%)', zIndex: -1, pointerEvents: 'none' }}
+        style={{ position: 'fixed', top: '-10%', left: '-10%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(90, 140, 58, 0.2) 0%, transparent 70%)', zIndex: 0, pointerEvents: 'none' }}
       >
         <motion.div animate={{ x: [0, 30, 0], y: [0, -30, 0] }} transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }} style={{ width: '100%', height: '100%' }} />
       </motion.div>
@@ -245,12 +245,12 @@ function App() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2 }}
-        style={{ position: 'fixed', bottom: '-20%', right: '-10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(45, 80, 22, 0.03) 0%, transparent 70%)', zIndex: -1, pointerEvents: 'none' }}
+        style={{ position: 'fixed', bottom: '-10%', right: '-10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(45, 80, 22, 0.2) 0%, transparent 70%)', zIndex: 0, pointerEvents: 'none' }}
       >
         <motion.div animate={{ x: [0, -20, 0], y: [0, 20, 0] }} transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }} style={{ width: '100%', height: '100%' }} />
       </motion.div>
 
-      {/* Floating Sprout Icons - Restored */}
+      {/* Floating Sprout Icons - Increased Opacity and size */}
       {[
         { Icon: Sprout, top: '15%', left: '10%' },
         { Icon: Leaf, top: '25%', right: '15%' },
@@ -262,7 +262,7 @@ function App() {
           key={index}
           initial={{ opacity: 0 }}
           animate={{
-            opacity: [0.05, 0.1, 0.05],
+            opacity: [0.3, 0.6, 0.3], // Much higher opacity for visibility test
             y: [-15, 15, -15],
             rotate: [0, 10, -10, 0]
           }}
@@ -278,12 +278,12 @@ function App() {
             left: item.left,
             right: item.right,
             bottom: item.bottom,
-            zIndex: -1,
+            zIndex: 0,
             pointerEvents: 'none',
             color: 'var(--color-primary)'
           }}
         >
-          <item.Icon size={40} strokeWidth={1.5} />
+          <item.Icon size={48} strokeWidth={2} />
         </motion.div>
       ))}
       <Navbar />
