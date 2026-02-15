@@ -109,7 +109,7 @@ h6 {
 
 /* Mobile Responsiveness */
 /* Mobile Responsiveness */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
 
   /* Navigation */
   .desktop-menu {
