@@ -184,6 +184,23 @@ const Products = () => {
 
 // Contact Component
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const subject = `New Inquiry from ${formData.name}`;
+    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0AMessage: ${formData.message}`;
+    window.location.href = `mailto:trueleaf1111@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+  };
+
   return (
     <section id="contact" style={{ padding: '6rem 0', background: 'var(--color-primary)', color: 'white', textAlign: 'center' }}>
       <div className="container">
@@ -202,13 +219,37 @@ const Contact = () => {
             </div>
           </div>
 
-          <form style={{ maxWidth: '600px', margin: '0 auto', background: 'rgba(255,255,255,0.1)', padding: '3rem', borderRadius: '12px' }}>
+          <form onSubmit={handleSubmit} style={{ maxWidth: '600px', margin: '0 auto', background: 'rgba(255,255,255,0.1)', padding: '3rem', borderRadius: '12px' }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
-              <input type="text" placeholder="Name" style={{ padding: '1rem', borderRadius: '4px', border: 'none' }} />
-              <input type="email" placeholder="Email" style={{ padding: '1rem', borderRadius: '4px', border: 'none' }} />
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                style={{ padding: '1rem', borderRadius: '4px', border: 'none' }}
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                style={{ padding: '1rem', borderRadius: '4px', border: 'none' }}
+              />
             </div>
-            <textarea placeholder="Message" rows="4" style={{ width: '100%', padding: '1rem', borderRadius: '4px', border: 'none', marginBottom: '1rem' }}></textarea>
-            <button className="btn" style={{ width: '100%', backgroundColor: 'white', color: 'var(--color-primary)', fontWeight: 'bold' }}>SEND MESSAGE</button>
+            <textarea
+              name="message"
+              placeholder="Message"
+              rows="4"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              style={{ width: '100%', padding: '1rem', borderRadius: '4px', border: 'none', marginBottom: '1rem' }}
+            ></textarea>
+            <button type="submit" className="btn" style={{ width: '100%', backgroundColor: 'white', color: 'var(--color-primary)', fontWeight: 'bold' }}>SEND MESSAGE</button>
           </form>
         </motion.div>
       </div>
