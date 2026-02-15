@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-2 bg-white/90 backdrop-blur-md shadow-md' : 'py-6 bg-transparent'}`}
-      style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1000, padding: scrolled ? '0.5rem 0' : '1.5rem 0', backgroundColor: scrolled ? 'rgba(248, 246, 240, 0.9)' : 'transparent', backdropFilter: scrolled ? 'blur(10px)' : 'none', transition: 'all 0.3s ease' }}>
+      style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1000, padding: scrolled ? '0.5rem 0' : '1.5rem 0', backgroundColor: scrolled ? 'rgba(45, 80, 22, 0.85)' : 'transparent', backdropFilter: scrolled ? 'blur(12px)' : 'none', borderBottom: scrolled ? '1px solid rgba(255,255,255,0.1)' : 'none', transition: 'all 0.3s ease' }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <a href="#" className="logo">
           <img src="/logo.png" alt="Trueleaf" style={{ maxHeight: scrolled ? '100px' : '120px', transition: 'max-height 0.3s ease' }} />
@@ -25,14 +25,14 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="nav-links desktop-menu" style={{ display: 'flex', gap: '2rem' }}>
           {['Home', 'About', 'Products', 'Contact'].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} style={{ fontSize: '1.2rem', fontWeight: 500, color: 'var(--color-primary)', textDecoration: 'none' }}>
+            <a key={item} href={`#${item.toLowerCase()}`} style={{ fontSize: '1.2rem', fontWeight: 500, color: scrolled ? 'white' : 'var(--color-primary)', textDecoration: 'none' }}>
               {item}
             </a>
           ))}
         </div>
 
         {/* Mobile Toggle */}
-        <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-primary)' }}>
+        <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: scrolled ? 'white' : 'var(--color-primary)' }}>
           {isOpen ? <X size={32} /> : <Menu size={32} />}
         </button>
       </div>
