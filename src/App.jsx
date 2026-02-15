@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Menu, X, Mail, Phone, Instagram, Facebook, Sprout, Leaf } from 'lucide-react';
+import { Menu, X, Mail, Phone, Instagram, Facebook, Sprout, Leaf, MapPin } from 'lucide-react';
 import './index.css';
 
 // Navigation Component
@@ -191,10 +191,14 @@ const Contact = () => {
           <h2 style={{ fontSize: '3rem', marginBottom: '1rem', color: 'white' }}>Get Fresh Greens Delivered</h2>
           <div style={{ marginBottom: '3rem' }}>
             <p style={{ fontSize: '1.2rem', opacity: 0.9 }}>Founder: Saratha</p>
-            <div className="contact-info" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', fontSize: '1.1rem', opacity: 0.8 }}>
+            <div className="contact-info" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', fontSize: '1.1rem', opacity: 0.8, marginBottom: '0.5rem' }}>
               <a href="mailto:trueleaf1111@gmail.com" style={{ color: 'white', textDecoration: 'underline' }}>trueleaf1111@gmail.com</a>
               <span className="separator">|</span>
               <a href="tel:+918610674204" style={{ color: 'white', textDecoration: 'underline' }}>+91 86106 74204</a>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem', opacity: 0.8, color: 'white' }}>
+              <MapPin size={18} />
+              <span>AVT Nagar, Gokul Nagar, Hosur, 635109</span>
             </div>
           </div>
 
