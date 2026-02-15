@@ -116,7 +116,7 @@ const Hero = () => {
 // About Component
 const About = () => {
   return (
-    <section id="about" style={{ padding: '6rem 0', background: 'var(--color-cream)' }}>
+    <section id="about" style={{ padding: '6rem 0' }}>
       <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
         <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
           <h2 style={{ fontSize: '3rem', color: 'var(--color-primary)', marginBottom: '1.5rem' }}>Grown with Love, <br />Free from Harm.</h2>
@@ -153,7 +153,7 @@ const products = [
 
 const Products = () => {
   return (
-    <section id="products" style={{ padding: '6rem 0', background: 'white' }}>
+    <section id="products" style={{ padding: '6rem 0' }}>
       <div className="container">
         <h2 style={{ fontSize: '3rem', textAlign: 'center', marginBottom: '4rem', color: 'var(--color-primary)' }}>Our Microgreens</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
@@ -165,7 +165,7 @@ const Products = () => {
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -10 }}
               className="shadow-soft"
-              style={{ background: 'var(--color-cream)', borderRadius: '12px', overflow: 'hidden' }}
+              style={{ background: 'white', borderRadius: '12px', overflow: 'hidden' }}
             >
               <div style={{ height: '250px', overflow: 'hidden' }}>
                 <img src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -231,12 +231,12 @@ const Footer = () => (
 function App() {
   return (
     <div className="App" style={{ position: 'relative', overflow: 'hidden' }}>
-      {/* Background Blobs - Increased Opacity for Visibility */}
+      {/* Background Blobs - Subtle & Behind Content */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2 }}
-        style={{ position: 'fixed', top: '-10%', left: '-10%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(90, 140, 58, 0.2) 0%, transparent 70%)', zIndex: 0, pointerEvents: 'none' }}
+        style={{ position: 'fixed', top: '-10%', left: '-10%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(90, 140, 58, 0.1) 0%, transparent 70%)', zIndex: -1, pointerEvents: 'none' }}
       >
         <motion.div animate={{ x: [0, 30, 0], y: [0, -30, 0] }} transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }} style={{ width: '100%', height: '100%' }} />
       </motion.div>
@@ -245,12 +245,12 @@ function App() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2 }}
-        style={{ position: 'fixed', bottom: '-10%', right: '-10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(45, 80, 22, 0.2) 0%, transparent 70%)', zIndex: 0, pointerEvents: 'none' }}
+        style={{ position: 'fixed', bottom: '-10%', right: '-10%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(45, 80, 22, 0.1) 0%, transparent 70%)', zIndex: -1, pointerEvents: 'none' }}
       >
         <motion.div animate={{ x: [0, -20, 0], y: [0, 20, 0] }} transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }} style={{ width: '100%', height: '100%' }} />
       </motion.div>
 
-      {/* Floating Sprout Icons - Increased Opacity and size */}
+      {/* Floating Sprout Icons - Subtle & Behind Content */}
       {[
         { Icon: Sprout, top: '15%', left: '10%' },
         { Icon: Leaf, top: '25%', right: '15%' },
@@ -262,7 +262,7 @@ function App() {
           key={index}
           initial={{ opacity: 0 }}
           animate={{
-            opacity: [0.3, 0.6, 0.3], // Much higher opacity for visibility test
+            opacity: [0.1, 0.2, 0.1],
             y: [-15, 15, -15],
             rotate: [0, 10, -10, 0]
           }}
@@ -278,12 +278,12 @@ function App() {
             left: item.left,
             right: item.right,
             bottom: item.bottom,
-            zIndex: 0,
+            zIndex: -1,
             pointerEvents: 'none',
             color: 'var(--color-primary)'
           }}
         >
-          <item.Icon size={48} strokeWidth={2} />
+          <item.Icon size={48} strokeWidth={1.5} />
         </motion.div>
       ))}
       <Navbar />
