@@ -83,10 +83,10 @@ const Hero = () => {
           </p>
 
           <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            <motion.a href="#contact" className="btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.a href="#contact" className="btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} aria-label="Order microgreens now">
               ORDER NOW
             </motion.a>
-            <motion.a href="#products" className="btn" style={{ background: 'transparent', border: '2px solid var(--color-primary)', color: 'var(--color-primary)' }} whileHover={{ scale: 1.05, background: 'rgba(45, 80, 22, 0.05)' }} whileTap={{ scale: 0.95 }}>
+            <motion.a href="#products" className="btn" style={{ background: 'transparent', border: '2px solid var(--color-primary)', color: 'var(--color-primary)' }} whileHover={{ scale: 1.05, background: 'rgba(45, 80, 22, 0.05)' }} whileTap={{ scale: 0.95 }} aria-label="View our menu">
               VIEW MENU
             </motion.a>
           </div>
@@ -105,7 +105,14 @@ const Hero = () => {
           <div style={{ position: 'absolute', width: '120%', height: '120%', background: '#d1e7dd', borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%', zIndex: -1, animation: 'morph 8s ease-in-out infinite' }} />
 
           <div className="floating" style={{ position: 'relative', width: '90%', zIndex: 1 }}>
-            <img src="/sunflower-shoots.png" alt="Sunflower Microgreens" style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.2))', transform: 'scale(1.15)' }} />
+            <img
+              src="/sunflower-shoots.png"
+              alt="Fresh Sunflower Microgreens ready to harvest"
+              width="600"
+              height="600"
+              fetchPriority="high"
+              style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.2))', transform: 'scale(1.15)' }}
+            />
           </div>
         </motion.div>
       </div>
@@ -134,7 +141,14 @@ const About = () => {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="shadow-soft" style={{ borderRadius: '20px', overflow: 'hidden', background: 'white' }}>
-          <img src="/radish-mix.png" alt="Fresh Microgreens" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img
+            src="/radish-mix.png"
+            alt="Mix of fresh radish microgreens"
+            loading="lazy"
+            width="600"
+            height="400"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
         </motion.div>
       </div>
     </section>
@@ -168,7 +182,14 @@ const Products = () => {
               style={{ background: 'white', borderRadius: '12px', overflow: 'hidden' }}
             >
               <div style={{ height: '250px', overflow: 'hidden' }}>
-                <img src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img
+                  src={product.img}
+                  alt={`${product.name} microgreens`}
+                  loading="lazy"
+                  width="400"
+                  height="250"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
               </div>
               <div style={{ padding: '2rem' }}>
                 <h3 style={{ fontSize: '1.5rem', color: 'var(--color-primary)', marginBottom: '0.5rem' }}>{product.name}</h3>
@@ -255,6 +276,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   style={{ padding: '1rem', borderRadius: '4px', border: 'none' }}
+                  aria-label="Name"
                 />
                 <input
                   type="email"
@@ -264,6 +286,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   style={{ padding: '1rem', borderRadius: '4px', border: 'none' }}
+                  aria-label="Email Address"
                 />
               </div>
               <textarea
@@ -274,8 +297,9 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 style={{ width: '100%', padding: '1rem', borderRadius: '4px', border: 'none', marginBottom: '1rem' }}
+                aria-label="Message"
               ></textarea>
-              <button type="submit" disabled={isSubmitting} className="btn" style={{ width: '100%', backgroundColor: 'white', color: 'var(--color-primary)', fontWeight: 'bold', opacity: isSubmitting ? 0.7 : 1 }}>
+              <button type="submit" disabled={isSubmitting} className="btn" style={{ width: '100%', backgroundColor: 'white', color: 'var(--color-primary)', fontWeight: 'bold', opacity: isSubmitting ? 0.7 : 1 }} aria-label="Send Message">
                 {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
               </button>
             </form>
@@ -284,7 +308,7 @@ const Contact = () => {
           {/* WhatsApp Button */}
           <div style={{ marginTop: '3rem' }}>
             <p style={{ marginBottom: '1rem', opacity: 0.9 }}>Prefer to chat?</p>
-            <a href="https://wa.me/918610674204" target="_blank" rel="noopener noreferrer" className="btn" style={{ backgroundColor: '#25D366', color: 'white', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+            <a href="https://wa.me/918610674204" target="_blank" rel="noopener noreferrer" className="btn" aria-label="Chat on WhatsApp" style={{ backgroundColor: '#25D366', color: 'white', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
               <MessageCircle size={20} />
               Chat on WhatsApp
             </a>
