@@ -129,6 +129,17 @@ h6 {
     padding: 0 1.5rem;
   }
 
+  /* Mobile Menu */
+  .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: var(--color-cream);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
   /* Hero Section */
   #home {
     padding-top: 120px !important;
