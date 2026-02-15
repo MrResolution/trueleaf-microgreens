@@ -32,7 +32,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)} style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-primary)' }}>
+        <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-primary)' }}>
           {isOpen ? <X size={32} /> : <Menu size={32} />}
         </button>
       </div>
