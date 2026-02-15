@@ -190,8 +190,8 @@ h6 {
 
   /* Logo */
   .logo img {
-    max-height: 200px !important;
-    margin-top: -20px;
+    max-height: 100px !important;
+    margin-top: -10px;
   }
 
   /* Nav spacing on mobile */
