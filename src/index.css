@@ -118,6 +118,10 @@ h6 {
 
   .mobile-toggle {
     display: block !important;
+    position: relative;
+    z-index: 1001;
+    /* Ensure above overlay */
+    pointer-events: auto;
   }
 
   /* Layout */
