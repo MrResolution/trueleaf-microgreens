@@ -19,7 +19,7 @@ const Navbar = () => {
       style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1000, padding: scrolled ? '0.5rem 0' : '1.5rem 0', backgroundColor: scrolled ? 'rgba(248, 246, 240, 0.9)' : 'transparent', backdropFilter: scrolled ? 'blur(10px)' : 'none', transition: 'all 0.3s ease' }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <a href="#" className="logo">
-          <img src="/logo.png" alt="Trueleaf" style={{ maxHeight: scrolled ? '220px' : '250px', transition: 'max-height 0.3s ease' }} />
+          <img src="/logo.png" alt="Trueleaf" style={{ maxHeight: scrolled ? '100px' : '120px', transition: 'max-height 0.3s ease' }} />
         </a>
 
         {/* Desktop Menu */}
