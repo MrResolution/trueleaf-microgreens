@@ -1,16 +1,75 @@
-# React + Vite
+# TrueLeaf Microgreens Website 🌱
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive, and visually engaging website for **TrueLeaf Microgreens**, built with React and Vite. This project showcases fresh microgreens products with a clean, nature-inspired design.
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **Responsive Design:** Fully optimized for desktops, tablets, and mobile devices.
+*   **Modern Hero Section:** Featuring high-quality imagery and a clear call-to-action.
+*   **Product Showcase:** Display of various microgreen products with hover effects and detailed descriptions.
+*   **About Us:** Information about the founders and mission.
+*   **Contact Form:** Easy way for customers to reach out.
+*   **Smooth Animations:** Subtle entrance animations and hover effects using CSS and Framer Motion.
+*   **Custom Branding:** Includes custom favicon and consistent brand colors.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   **Framework:** [React](https://react.dev/)
+*   **Build Tool:** [Vite](https://vitejs.dev/)
+*   **Styling:** Vanilla CSS (with CSS Variables for theming) & Responsive Media Queries
+*   **Animations:** [Framer Motion](https://www.framer.com/motion/)
+*   **Icons:** [Lucide React](https://lucide.dev/)
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Follow these instructions to get the project up and running on your local machine.
+
+### Prerequisites
+
+*   Node.js (v14 or higher)
+*   npm (v6 or higher)
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/MrResolution/trueleaf-microgreens.git
+    cd trueleaf-microgreens
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+
+4.  Open your browser and navigate to `http://localhost:5173` (or the port shown in your terminal).
+
+## 📂 Project Structure
+
+```
+trueleaf-microgreens/
+├── public/              # Static assets (images, icons)
+├── src/
+│   ├── assets/          # Source assets
+│   ├── App.jsx          # Main application component
+│   ├── index.css        # Global styles and resets
+│   └── main.jsx         # Entry point
+├── index.html           # HTML template
+├── package.json         # Project dependencies and scripts
+└── vite.config.js       # Vite configuration
+```
+
+## 🎨 Customizing
+
+*   **Colors:** You can adjust the brand colors in `src/index.css` under the `:root` variable definitions.
+*   **Content:** Text content and images can be updated directly in `src/App.jsx`.
+*   **Images:** Place new images in the `public/` directory and reference them in your components.
+
+---
+
+**Built with 💚 for TrueLeaf Microgreens**
