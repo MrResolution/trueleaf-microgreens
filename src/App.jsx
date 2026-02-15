@@ -101,8 +101,8 @@ const Hero = () => {
           className="floating-icon-wrapper"
           style={{ position: 'relative', height: '600px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
         >
-          {/* Abstract blobs background */}
-          <div style={{ position: 'absolute', width: '80%', height: '80%', background: '#d4edda', borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%', zIndex: -1, animation: 'morph 8s ease-in-out infinite' }} />
+          {/* Abstract blobs background - Increased size for visibility */}
+          <div style={{ position: 'absolute', width: '120%', height: '120%', background: '#d1e7dd', borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%', zIndex: -1, animation: 'morph 8s ease-in-out infinite' }} />
 
           <div className="floating" style={{ position: 'relative', width: '90%', zIndex: 1 }}>
             <img src="/sunflower-shoots.png" alt="Sunflower Microgreens" style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.2))', transform: 'scale(1.15)' }} />
