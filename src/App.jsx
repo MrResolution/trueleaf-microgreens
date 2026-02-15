@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Menu, X, Mail, Phone, Instagram, Facebook, Sprout, Leaf, MapPin } from 'lucide-react';
+import { Menu, X, Mail, Phone, Instagram, Facebook, Sprout, Leaf, MapPin, MessageCircle } from 'lucide-react';
 import './index.css';
 
 // Navigation Component
@@ -189,16 +189,34 @@ const Contact = () => {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const subject = `New Inquiry from ${formData.name}`;
-    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0AMessage: ${formData.message}`;
-    window.location.href = `mailto:trueleaf1111@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    setIsSubmitting(true);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...formData })
+    })
+      .then(() => {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+      })
+      .catch(error => alert(error))
+      .finally(() => setIsSubmitting(false));
   };
 
   return (
@@ -219,38 +237,59 @@ const Contact = () => {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} style={{ maxWidth: '600px', margin: '0 auto', background: 'rgba(255,255,255,0.1)', padding: '3rem', borderRadius: '12px' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                value={formData.name}
+          {isSubmitted ? (
+            <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} style={{ background: 'rgba(255,255,255,0.1)', padding: '3rem', borderRadius: '12px', maxWidth: '600px', margin: '0 auto' }}>
+              <h3 style={{ fontSize: '2rem', marginBottom: '1rem', color: 'white' }}>Thank You! 🌿</h3>
+              <p>Your message has been received. We'll get back to you shortly.</p>
+              <button className="btn" onClick={() => setIsSubmitted(false)} style={{ marginTop: '2rem', backgroundColor: 'white', color: 'var(--color-primary)', fontWeight: 'bold' }}>Send Another Message</button>
+            </motion.div>
+          ) : (
+            <form onSubmit={handleSubmit} style={{ maxWidth: '600px', margin: '0 auto', background: 'rgba(255,255,255,0.1)', padding: '3rem', borderRadius: '12px' }}>
+              <input type="hidden" name="form-name" value="contact" />
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  style={{ padding: '1rem', borderRadius: '4px', border: 'none' }}
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  style={{ padding: '1rem', borderRadius: '4px', border: 'none' }}
+                />
+              </div>
+              <textarea
+                name="message"
+                placeholder="Message"
+                rows="4"
+                value={formData.message}
                 onChange={handleChange}
                 required
-                style={{ padding: '1rem', borderRadius: '4px', border: 'none' }}
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                style={{ padding: '1rem', borderRadius: '4px', border: 'none' }}
-              />
-            </div>
-            <textarea
-              name="message"
-              placeholder="Message"
-              rows="4"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              style={{ width: '100%', padding: '1rem', borderRadius: '4px', border: 'none', marginBottom: '1rem' }}
-            ></textarea>
-            <button type="submit" className="btn" style={{ width: '100%', backgroundColor: 'white', color: 'var(--color-primary)', fontWeight: 'bold' }}>SEND MESSAGE</button>
-          </form>
+                style={{ width: '100%', padding: '1rem', borderRadius: '4px', border: 'none', marginBottom: '1rem' }}
+              ></textarea>
+              <button type="submit" disabled={isSubmitting} className="btn" style={{ width: '100%', backgroundColor: 'white', color: 'var(--color-primary)', fontWeight: 'bold', opacity: isSubmitting ? 0.7 : 1 }}>
+                {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
+              </button>
+            </form>
+          )}
+
+          {/* WhatsApp Button */}
+          <div style={{ marginTop: '3rem' }}>
+            <p style={{ marginBottom: '1rem', opacity: 0.9 }}>Prefer to chat?</p>
+            <a href="https://wa.me/918610674204" target="_blank" rel="noopener noreferrer" className="btn" style={{ backgroundColor: '#25D366', color: 'white', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+              <MessageCircle size={20} />
+              Chat on WhatsApp
+            </a>
+          </div>
+
         </motion.div>
       </div>
     </section>
