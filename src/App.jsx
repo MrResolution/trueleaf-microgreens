@@ -212,7 +212,24 @@ const recipes = [
     desc: 'Ideally suited for a quick, nutritious breakfast.',
     ingredient: 'Mustard Greens',
     time: '5 mins',
-    difficulty: 'Easy'
+    difficulty: 'Easy',
+    servings: '1 serving',
+    ingredients: [
+      '2 slices sourdough bread',
+      '1 ripe avocado',
+      '1 tbsp lemon juice',
+      '1 tsp chili flakes',
+      '1 cup fresh Mustard Microgreens',
+      'Salt and pepper to taste',
+      'Olive oil for drizzling'
+    ],
+    instructions: [
+      'Toast the sourdough slices until golden brown.',
+      'Mash avocado with lemon juice, salt, and pepper.',
+      'Spread mashed avocado generously on toast.',
+      'Top with chili flakes and a large handful of fresh Mustard Microgreens.',
+      'Drizzle with olive oil and serve immediately.'
+    ]
   },
   {
     title: 'Classic Aloo Methi',
@@ -220,7 +237,24 @@ const recipes = [
     desc: 'Traditional potatoes tossed with fresh fenugreek leaves.',
     ingredient: 'Fenugreek',
     time: '20 mins',
-    difficulty: 'Medium'
+    difficulty: 'Medium',
+    servings: '2 servings',
+    ingredients: [
+      '3 medium potatoes, boiled and cubed',
+      '2 tbsp oil',
+      '1 tsp cumin seeds',
+      '1/2 tsp turmeric powder',
+      '1 tsp red chili powder',
+      '2 cups fresh Fenugreek Microgreens',
+      'Salt to taste'
+    ],
+    instructions: [
+      'Heat oil in a pan and add cumin seeds.',
+      'Add cubed potatoes, turmeric, red chili powder, and salt.',
+      'Toss well and cook on medium heat for 5-7 minutes until potatoes are crispy.',
+      'Turn off the heat and immediately stir in the fresh Fenugreek Microgreens.',
+      'The residual heat will perfectly wilt the greens without losing flavor. Serve hot with roti or rice.'
+    ]
   },
   {
     title: 'Wheatgrass & Pineapple Smoothie',
@@ -228,16 +262,102 @@ const recipes = [
     desc: 'A tropical detox drink to start your day.',
     ingredient: 'Wheat',
     time: '5 mins',
-    difficulty: 'Easy'
+    difficulty: 'Easy',
+    servings: '1 glass',
+    ingredients: [
+      '1/2 cup fresh Wheatgrass',
+      '1 cup pineapple chunks (frozen)',
+      '1 cup coconut water',
+      '1 inch piece of ginger',
+      '1 tbsp lemon juice'
+    ],
+    instructions: [
+      'Combine wheatgrass, pineapple, ginger, and coconut water in a blender.',
+      'Blend on high speed until completely smooth.',
+      'Add lemon juice and blend for a few more seconds.',
+      'Strain through a fine mesh sieve if you prefer a smoother texture.',
+      'Pour into a glass and drink immediately for maximum nutrient absorption.'
+    ]
   }
 ];
 
+const RecipeModal = ({ recipe, onClose }) => {
+  if (!recipe) return null;
+
+  return (
+    <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+      <div onClick={onClose} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(5px)' }}></div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        style={{ background: 'white', borderRadius: '20px', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)', width: '100%', maxWidth: '800px', maxHeight: '90vh', overflowY: 'auto', position: 'relative', zIndex: 10 }}
+      >
+        <button onClick={onClose} style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'white', border: 'none', borderRadius: '50%', padding: '0.5rem', cursor: 'pointer', boxShadow: '0 2px 10px rgba(0,0,0,0.1)', zIndex: 20 }}>
+          <X size={24} color="#333" />
+        </button>
+
+        <div style={{ height: '300px', overflow: 'hidden' }}>
+          <img src={recipe.img} alt={recipe.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        </div>
+
+        <div style={{ padding: '2.5rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem', fontSize: '0.9rem', color: '#666' }}>
+            <span style={{ background: '#f0fdf4', padding: '0.4rem 1rem', borderRadius: '20px', color: 'var(--color-primary)', fontWeight: 'bold' }}>{recipe.time}</span>
+            <span style={{ background: '#f0fdf4', padding: '0.4rem 1rem', borderRadius: '20px', color: 'var(--color-primary)', fontWeight: 'bold' }}>{recipe.difficulty}</span>
+            <span style={{ background: '#f0fdf4', padding: '0.4rem 1rem', borderRadius: '20px', color: 'var(--color-primary)', fontWeight: 'bold' }}>{recipe.servings}</span>
+          </div>
+
+          <h2 style={{ fontSize: '2.5rem', color: 'var(--color-primary)', marginBottom: '1rem', lineHeight: 1.2 }}>{recipe.title}</h2>
+          <p style={{ fontSize: '1.1rem', color: '#555', marginBottom: '2.5rem' }}>{recipe.desc}</p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
+            <div>
+              <h3 style={{ fontSize: '1.5rem', color: 'var(--color-primary)', marginBottom: '1.5rem', borderBottom: '2px solid #eee', paddingBottom: '0.5rem' }}>Ingredients</h3>
+              <ul style={{ listStyle: 'none', padding: 0 }}>
+                {recipe.ingredients.map((item, index) => (
+                  <li key={index} style={{ marginBottom: '0.8rem', display: 'flex', alignItems: 'start', color: '#444' }}>
+                    <span style={{ color: 'var(--color-accent)', marginRight: '0.8rem', marginTop: '4px' }}>•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 style={{ fontSize: '1.5rem', color: 'var(--color-primary)', marginBottom: '1.5rem', borderBottom: '2px solid #eee', paddingBottom: '0.5rem' }}>Instructions</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                {recipe.instructions.map((step, index) => (
+                  <div key={index} style={{ display: 'flex', gap: '1rem' }}>
+                    <div style={{ minWidth: '30px', height: '30px', background: 'var(--color-primary)', color: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '0.9rem' }}>
+                      {index + 1}
+                    </div>
+                    <p style={{ color: '#444', lineHeight: '1.6' }}>{step}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 const Recipes = () => {
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+
   return (
     <section id="recipes" style={{ padding: '6rem 0', background: '#fcfcfc' }}>
+      <AnimatePresence>
+        {selectedRecipe && (
+          <RecipeModal recipe={selectedRecipe} onClose={() => setSelectedRecipe(null)} />
+        )}
+      </AnimatePresence>
+
       <div className="container">
         <h2 style={{ fontSize: '3rem', textAlign: 'center', marginBottom: '1rem', color: 'var(--color-primary)' }}>Fresh Recipes</h2>
-        <p style={{ textAlign: 'center', marginBottom: '4rem', color: '#666', fontSize: '1.2rem' }}>Delicious ways to add microgreens to your daily diet.</p>
+        <p style={{ textAlign: 'center', marginBottom: '4rem', color: '#666', fontSize: '1.2rem' }}>Delicious ways to add microgreens to your daily diet. Click on a recipe to view details.</p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
           {recipes.map((recipe, index) => (
@@ -247,8 +367,9 @@ const Recipes = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
+              onClick={() => setSelectedRecipe(recipe)}
               className="shadow-soft"
-              style={{ background: 'white', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.05)' }}
+              style={{ background: 'white', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.05)', cursor: 'pointer' }}
             >
               <div style={{ height: '220px', overflow: 'hidden', position: 'relative' }}>
                 <img
