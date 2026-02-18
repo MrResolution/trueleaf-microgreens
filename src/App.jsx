@@ -157,12 +157,12 @@ const About = () => {
 
 // Products Component
 const products = [
-  { name: 'Sunflower', img: '/sunflower-shoots.png', desc: 'Nutty, crunchy, and protein-rich.' },
-  { name: 'Peas', img: '/pea-shoots.png', desc: 'Sweet and fresh like spring peas.' },
-  { name: 'Red Radish', img: '/radish-mix.png', desc: 'Spicy, crunchy, and vibrant purple.' },
-  { name: 'Wheat Grass', img: '/wheat-grass.png', desc: 'Powerhouse of chlorophyll and vitamins.' },
   { name: 'Mustard', img: '/mustard.png', desc: 'Bold, spicy flavor that adds a punch.' },
-  { name: 'Blue Cabbage', img: '/blue-cabbage.png', desc: 'Stunning violet colors with mild flavor.' },
+  { name: 'Fenugreek', img: '/fenugreek.png', desc: 'Bitter-sweet nutty flavor, perfect for Indian cuisine.' },
+  { name: 'Radish (white)', img: '/white-radish.png', desc: 'Fresh, crisp with a spicy kick.' },
+  { name: 'Wheat', img: '/wheat-grass.png', desc: 'Powerhouse of chlorophyll and vitamins.' },
+  { name: 'Peas', img: '/peas.png', desc: 'Sweet and fresh like spring peas.' },
+  { name: 'Green gram', img: '/green-gram.png', desc: 'Mild, sweet, and crunchy protein boost.' },
 ];
 
 const Products = () => {
