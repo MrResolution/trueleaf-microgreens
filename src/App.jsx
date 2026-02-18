@@ -22,9 +22,10 @@ const Navbar = () => {
           <img src="/logo.png" alt="Trueleaf" style={{ maxHeight: scrolled ? '100px' : '120px', transition: 'max-height 0.3s ease' }} />
         </a>
 
+
         {/* Desktop Menu */}
         <div className="nav-links desktop-menu" style={{ display: 'flex', gap: '2rem' }}>
-          {['Home', 'About', 'Products', 'Contact'].map((item) => (
+          {['Home', 'About', 'Products', 'Recipes', 'Contact'].map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`} style={{ fontSize: '1.2rem', fontWeight: 500, color: 'var(--color-primary)', textDecoration: 'none' }}>
               {item}
             </a>
@@ -48,7 +49,7 @@ const Navbar = () => {
             style={{ background: 'var(--color-cream)', overflow: 'hidden', borderTop: '1px solid rgba(0,0,0,0.1)' }}
           >
             <div className="container" style={{ padding: '2rem 0', display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center' }}>
-              {['Home', 'About', 'Products', 'Contact'].map((item) => (
+              {['Home', 'About', 'Products', 'Recipes', 'Contact'].map((item) => (
                 <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsOpen(false)} style={{ fontSize: '1.5rem', fontWeight: 500, color: 'var(--color-primary)', textDecoration: 'none' }}>
                   {item}
                 </a>
@@ -194,6 +195,85 @@ const Products = () => {
               <div style={{ padding: '2rem' }}>
                 <h3 style={{ fontSize: '1.5rem', color: 'var(--color-primary)', marginBottom: '0.5rem' }}>{product.name}</h3>
                 <p style={{ color: '#666' }}>{product.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Recipes Component
+const recipes = [
+  {
+    title: 'Spicy Avocado Toast',
+    img: '/mustard.png', // Fallback to ingredient image
+    desc: 'Ideally suited for a quick, nutritious breakfast.',
+    ingredient: 'Mustard Greens',
+    time: '5 mins',
+    difficulty: 'Easy'
+  },
+  {
+    title: 'Classic Aloo Methi',
+    img: '/fenugreek.png', // Fallback to ingredient image
+    desc: 'Traditional potatoes tossed with fresh fenugreek leaves.',
+    ingredient: 'Fenugreek',
+    time: '20 mins',
+    difficulty: 'Medium'
+  },
+  {
+    title: 'Wheatgrass & Pineapple Smoothie',
+    img: '/wheat-grass.png', // Fallback to ingredient image
+    desc: 'A tropical detox drink to start your day.',
+    ingredient: 'Wheat',
+    time: '5 mins',
+    difficulty: 'Easy'
+  }
+];
+
+const Recipes = () => {
+  return (
+    <section id="recipes" style={{ padding: '6rem 0', background: '#fcfcfc' }}>
+      <div className="container">
+        <h2 style={{ fontSize: '3rem', textAlign: 'center', marginBottom: '1rem', color: 'var(--color-primary)' }}>Fresh Recipes</h2>
+        <p style={{ textAlign: 'center', marginBottom: '4rem', color: '#666', fontSize: '1.2rem' }}>Delicious ways to add microgreens to your daily diet.</p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
+          {recipes.map((recipe, index) => (
+            <motion.div
+              key={recipe.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="shadow-soft"
+              style={{ background: 'white', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.05)' }}
+            >
+              <div style={{ height: '220px', overflow: 'hidden', position: 'relative' }}>
+                <img
+                  src={recipe.img}
+                  alt={recipe.title}
+                  loading="lazy"
+                  width="400"
+                  height="220"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <div style={{ position: 'absolute', bottom: '10px', right: '10px', background: 'rgba(255,255,255,0.9)', padding: '0.3rem 0.8rem', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', color: 'var(--color-primary)' }}>
+                  {recipe.time}
+                </div>
+              </div>
+              <div style={{ padding: '1.5rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                  <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#888' }}>{recipe.difficulty}</span>
+                </div>
+                <h3 style={{ fontSize: '1.4rem', color: 'var(--color-primary)', marginBottom: '0.5rem' }}>{recipe.title}</h3>
+                <p style={{ color: '#666', marginBottom: '1.5rem', lineHeight: '1.6' }}>{recipe.desc}</p>
+
+                <div style={{ borderTop: '1px solid #eee', paddingTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <span style={{ fontSize: '0.9rem', color: '#555' }}>Made with:</span>
+                  <span style={{ fontSize: '0.9rem', fontWeight: 'bold', color: 'var(--color-accent)' }}>{recipe.ingredient}</span>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -382,6 +462,7 @@ function App() {
       <Hero />
       <About />
       <Products />
+      <Recipes />
       <Contact />
       <Footer />
     </div>
