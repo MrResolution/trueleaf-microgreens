@@ -12,6 +12,18 @@ A modern, responsive, and visually engaging website for **TrueLeaf Microgreens**
 *   **Smooth Animations:** Subtle entrance animations and hover effects using CSS and Framer Motion.
 *   **Custom Branding:** Includes custom favicon and consistent brand colors.
 
+## 🌿 Our Products
+
+TrueLeaf offers a variety of fresh, organically grown microgreens:
+
+*   **Mustard:** Bold, spicy flavor.
+*   **Fenugreek (Methi):** Bitter-sweet nutty notes.
+*   **White Radish:** Crisp with a spicy kick.
+*   **Wheat:** Nutrient-dense superfood.
+*   **Peas:** Sweet and fresh.
+*   **Green Gram:** Mild, crunchy protein boost.
+
+
 ## 🛠️ Tech Stack
 
 *   **Framework:** [React](https://react.dev/)
