@@ -73,7 +73,8 @@ trueleaf-microgreens/
 │   └── main.jsx         # Entry point
 ├── index.html           # HTML template
 ├── package.json         # Project dependencies and scripts
-└── vite.config.js       # Vite configuration
+├── vite.config.js       # Vite configuration
+└── DEVLOG.md            # Development progress and roadmap
 ```
 
 ## 🎨 Customizing

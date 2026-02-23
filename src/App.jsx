@@ -208,7 +208,7 @@ const Products = () => {
 const recipes = [
   {
     title: 'Spicy Avocado Toast',
-    img: '/mustard.png', // Fallback to ingredient image
+    img: '/spicy-avocado-toast.png',
     desc: 'Ideally suited for a quick, nutritious breakfast.',
     ingredient: 'Mustard Greens',
     time: '5 mins',
@@ -233,7 +233,7 @@ const recipes = [
   },
   {
     title: 'Classic Aloo Methi',
-    img: '/fenugreek.png', // Fallback to ingredient image
+    img: '/aloo-methi.png',
     desc: 'Traditional potatoes tossed with fresh fenugreek leaves.',
     ingredient: 'Fenugreek',
     time: '20 mins',
@@ -258,7 +258,7 @@ const recipes = [
   },
   {
     title: 'Wheatgrass & Pineapple Smoothie',
-    img: '/wheat-grass.png', // Fallback to ingredient image
+    img: '/wheatgrass-smoothie.png',
     desc: 'A tropical detox drink to start your day.',
     ingredient: 'Wheat',
     time: '5 mins',
